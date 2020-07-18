@@ -78,10 +78,10 @@ case $choice in
 	    echo "You have come back to main directory"
 	    echo "Enter name of the directory - "
 	    read dname
-	    if [ -d $dname ]
+	    if [ -d $dsname ]
        	then 
-	       cd $dname
-   	       echo "Switched to $dname"
+	       cd $dsname
+   	       echo "Switched to $dsname"
 	    else 
      	   echo "Directory doesn't exist."
 	fi;;
