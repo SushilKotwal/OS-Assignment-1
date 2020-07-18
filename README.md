@@ -1,106 +1,128 @@
+echo "*****WELCOME TO RD FILE MANAGEMENT SYSTEM *****"
 
-echo "Enter directory name :"
-read dname
-cd $dname
+echo "Enter name of the directory to enter : "
+read dir
+cd $dir
+echo "Entered into given directory successfully."
+
 
 i=1
-while[ $i = 1 ]
-    do
-
-	echo "1. Create File"
-    echo "2. Create a new directory"
-	echo "3. Search File"
-	echo "4. Delete File"
-	echo "5. Rename File"
-	echo "6. view Dictionary"
-    echo "7. Show contents of directory"
-	echo "8. Go back to main directory and enter into another directory."
-	echo "9. Enter into a sub directory"
-	echo "10. exit"
-	echo "Enter the choice"
+while [ $i = 1 ]
+   do
+	echo "1) Create a new file"
+	echo "2) Create a new directory"
+	echo "3) Search for a file"
+	echo "4) Search for a directory"
+	echo "5) Delete a file"
+	echo "6) Rename a file"
+	echo "7) Show contents of directory"
+	echo "8) Go back to main directory and enter into another directory."
+	echo "9) Enter into a sub directory"
+	echo "10) Exit Program"
+	echo "Enter your choice"
 	read choice
 
-case $choice in
+	case $choice in 
 	1)
-		echo "Enter File Name :"
-		read fname
-		if[-f $fname]
-		then
-			echo "File already exists"
-		else
-			touch $fname
-			echo "File Succcessfully created"
-		fi;;
-    
-     2)
-	    echo "Enter new directory name : "
-	    read newdirec
-	    if [ -d $newdirec ]
+	echo "Enter new file name to be created : "
+	read newfile
+	if [ -f $newfile ]
        	then
-	       echo "Directory already exists!"
-	    else 
-	       mkdir $newdirec
-	       echo "Directory created successfully."
-   	    fi;;
+	   echo " This file already exists!"
+	else 
+	   touch $newfile
+	   echo "File created successfully."
+   	fi;;
+   	
+   	2)
+	echo "Enter new directory name : "
+	read newdirec
+	if [ -d $newdirec ]
+       	then
+	   echo "Directory already exists!"
+	else 
+	   mkdir $newdirec
+	   echo "Directory created successfully."
+   	fi;;
+
 	3) 
-		echo "Enter File name :"
-		read sname
-		if[-f $sname]
-		then
-			echo "File exists"
-		else
-			echo "No such File exists"
-		fi;;
-	4)
-		echo "Enter the file name to delete :"
-		read dename
-		if[-f $dename]
-		then
-			rm $dename
-			echo "File Successfully deleted"
-		else
-			echo "No such file exists"
-		fi;;
+	echo "Enter file name to search for : "
+	read searchfile
+	if [ -f $searchfile ]
+       	then
+	   echo "File exist in this directory"
+	else 
+	   echo "No such file exists in this directory"
+	fi;;
+	
+	4) 
+	echo "Enter directory name to search for :  "
+	read searchdirec
+	if [ -d $searchdirec ]
+       	then
+	   echo "Directory found !"
+	else 
+	   echo "No such directory exists"
+	fi;;
+
 	5) 
-		echo "Enter the file name to be renamed :"
-		read oldname
-		echo "Enter the new name :"
-		read newname
-		mv $oldname $newname;;
+	echo "Enter the name of the file to delete : "
+	read dfile
+	if [ -f $dfile ]
+       	then 
+	   rm $dfile
+	   echo "File deleted successfully"
+	else 
+	   echo "File doesn't exist"
+	fi;;
+	
 	6) 
-		echo "Files in Directory S" $dname
-		ls;;
+	echo "Enter name of file to be rename : "
+	read ofile
+	if [ -f $ofile ]
+       	then
+	   echo "Enter new file name : "
+   	   read nfile 
+	   mv $ofile $nfile 
+    	   echo "The file is successfully renamed"
+	else 
+    	   echo "No such file exists"
+	fi;;
+
 	7)
-	    ls;;
+	ls;;
 
 	8) 
-	    cd ..
-	    echo "You have come back to main directory"
-	    echo "Enter name of the directory - "
-	    read dname
-	    if [ -d $dsname ]
+	cd ..
+	echo "You have come back to main directory"
+	echo "Enter name of the directory - "
+	read dname
+	if [ -d $dname ]
        	then 
-	       cd $dsname
-   	       echo "Switched to $dsname"
-	    else 
+	   cd $dname
+   	   echo "Switched to $dname"
+	else 
      	   echo "Directory doesn't exist."
 	fi;;
-    
+	
 	9) 
-	    echo "Enter name of the directory - "
-	    read dnam
-	    if [ -d $dnam ]
+	echo "Enter name of the directory - "
+	read dnam
+	if [ -d $dnam ]
        	then 
-	       cd $dnam
-   	       echo "Switched to $dnam"
-	    else 
+	   cd $dnam
+   	   echo "Switched to $dnam"
+	else 
      	   echo "Directory doesn't exist."
 	fi;;
 
 	10) 
-	    echo "YOU HAVE SUCCESSFULLY LEFT THE FM SYSTEM. "
-	    i=0
+	echo "YOU HAVE SUCCESSFULLY LEFT THE FM SYSTEM. "
+	i=0
 	;;
-    esac
-    done
+
+	esac
+
+done
+
     
